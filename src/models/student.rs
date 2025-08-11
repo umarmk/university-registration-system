@@ -2,17 +2,22 @@ use serde::{Deserialize, Serialize};
 use diesel::{Queryable, Insertable};
 use crate::schema::students;
 use validator::Validate;
+use chrono::{DateTime, Utc};
 
-#[derive(Debug, Queryable, Serialize)] // Add Debug trait here
+#[derive(Debug, Queryable, Serialize)]
 pub struct Student {
     pub id: i32,
     pub name: String,
     pub phone: String,
     pub email: String,
     pub course: String,
+    pub created_by: Option<i32>,
+    pub updated_by: Option<i32>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }
 
-#[derive(Debug, Insertable, Deserialize, Validate)] // Add Debug trait here
+#[derive(Debug, Insertable, Deserialize, Validate)]
 #[diesel(table_name = students)]
 pub struct NewStudent {
     #[validate(length(min = 2))]
@@ -25,4 +30,4 @@ pub struct NewStudent {
     pub email: String,
     
     pub course: String,
-}
+} 

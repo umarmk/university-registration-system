@@ -5,7 +5,7 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postpotato1
+      POSTGRES_PASSWORD: postpotato
       POSTGRES_DB: university_registration
     ports:
       - "5432:5432"
@@ -25,7 +25,7 @@ services:
       context: .
     environment:
       RUST_BACKTRACE: 1
-      DATABASE_URL: postgres://postgres:postpotato1@db/university_registration
+      DATABASE_URL: postgres://postgres:postpotato@db/university_registration
       RUST_LOG: debug
     ports:
       - "8081:8081"

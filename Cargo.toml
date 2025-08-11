@@ -1,15 +1,52 @@
 [package]
 name = "university_registration"
-version = "0.1.0"
+version = "2.0.0"
 edition = "2021"
 
 [dependencies]
-actix-web = "4.0.0"         # Web server for handling HTTP requests
-actix-rt = "2.5.0"           # Runtime for async tasks in Actix
-diesel = { version = "2.0.0", features = ["postgres"] } # Database ORM
-dotenv = "0.15.0"            # Manages environment variables
-env_logger = "0.10"         # Logger for Actix and Rust
-log = "0.4"                 # Logging API
-serde = { version = "1.0", features = ["derive"] } # For serializing data to JSON
-serde_json = "1.0"           # JSON handling
-validator = { version = "0.14", features = ["derive"] }     # Input validation
+# Web server and framework
+actix-web = "4.4.0"
+actix-rt = "2.9.0"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+actix-cors = "0.6.5"
+actix-web-prometheus = "0.1.2"
+actix-service = "2.0.2"
+
+# Database
+diesel = { version = "2.1.4", features = ["postgres", "r2d2", "chrono", "serde_json"] }
+diesel_migrations = "2.1.0"
+
+# Authentication and security
+jsonwebtoken = "9.2.0"
+bcrypt = "0.15.0"
+actix-web-httpauth = "0.8.1"
+
+# Configuration and logging
+dotenv = "0.15.0"
+env_logger = "0.11.0"
+log = "0.4.20"
+config = "0.13.4"
+
+# Serialization and validation
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+validator = { version = "0.16.1", features = ["derive"] }
+chrono = { version = "0.4.31", features = ["serde"] }
+
+# Metrics and telemetry
+prometheus = "0.13.3"
+lazy_static = "1.4.0"
+
+# Utilities
+thiserror = "1.0.50"
+anyhow = "1.0.75"
+uuid = { version = "1.6.1", features = ["v4", "serde"] }
+rand = "0.8.5"
+futures = "0.3.29"
+async-trait = "0.1.74"
+reqwest = { version = "0.11.22", features = ["json"] }
+
+# CORS and middleware
+actix-request-identifier = "4.1.0"
+tracing = "0.1.40"
+tracing-actix-web = "0.7.9"
